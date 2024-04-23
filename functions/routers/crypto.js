@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const cheerio = require('cheerio');
+const serverless = require('serverless-http');
 
-router.get('/get/ai', async (req, res) => {
+router.get('/get/crypto', async (req, res) => {
   try {
     // Fetch HTML of the TechCrunch website
-    const { data } = await axios.get("https://techcrunch.com/category/artificial-intelligence/");
+    const { data } = await axios.get("https://techcrunch.com/category/cryptocurrency/");
     // Load the HTML data using Cheerio
     const $ = cheerio.load(data);
     //console.log(data);
@@ -38,4 +39,5 @@ router.get('/get/ai', async (req, res) => {
   }
 });
 
-module.exports = router;
+app.use('/.netlify/functions/routers/crypto', router);
+module.exports.handler = serverless(app);

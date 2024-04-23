@@ -3,10 +3,10 @@ const router = express.Router();
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-router.get('/get/crypto', async (req, res) => {
+router.get('/get/latest', async (req, res) => {
   try {
     // Fetch HTML of the TechCrunch website
-    const { data } = await axios.get("https://techcrunch.com/category/cryptocurrency/");
+    const { data } = await axios.get("https://techcrunch.com/");
     // Load the HTML data using Cheerio
     const $ = cheerio.load(data);
     //console.log(data);
@@ -38,4 +38,5 @@ router.get('/get/crypto', async (req, res) => {
   }
 });
 
-module.exports = router;
+app.use('/.netlify/functions/routers/latest', router);
+module.exports.handler = serverless(app);

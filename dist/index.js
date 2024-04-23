@@ -1,8 +1,8 @@
 const express = require('express');
-const latest = require('./routers/latest');
-const startups = require('./routers/startups');
-const AI = require('./routers/AI');
-const crypto = require('./routers/crypto');
+const latest = require('../functions/routers/latest');
+const startups = require('../functions/routers/startups');
+const AI = require('../functions/routers/AI');
+const crypto = require('../functions/routers/crypto');
 
 const app = express();
 

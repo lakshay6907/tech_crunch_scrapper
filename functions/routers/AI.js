@@ -3,10 +3,10 @@ const router = express.Router();
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-router.get('/get/startups', async (req, res) => {
+router.get('/get/ai', async (req, res) => {
   try {
     // Fetch HTML of the TechCrunch website
-    const { data } = await axios.get("https://techcrunch.com/category/startups/");
+    const { data } = await axios.get("https://techcrunch.com/category/artificial-intelligence/");
     // Load the HTML data using Cheerio
     const $ = cheerio.load(data);
     //console.log(data);
@@ -38,4 +38,5 @@ router.get('/get/startups', async (req, res) => {
   }
 });
 
-module.exports = router;
+app.use('/.netlify/functions/routers/AI', router);
+module.exports.handler = serverless(app);
