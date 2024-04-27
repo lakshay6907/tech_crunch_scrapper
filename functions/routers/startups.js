@@ -38,5 +38,4 @@ router.get('/get/startups', async (req, res) => {
   }
 });
 
-app.use('/.netlify/functions/routers/startups', router);
-module.exports.handler = serverless(app);
+module.exports = router;

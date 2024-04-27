@@ -38,5 +38,4 @@ router.get('/get/latest', async (req, res) => {
   }
 });
 
-app.use('/.netlify/functions/routers/latest', router);
-module.exports.handler = serverless(app);
+module.exports = router;

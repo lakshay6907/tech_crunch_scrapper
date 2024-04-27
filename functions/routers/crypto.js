@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const cheerio = require('cheerio');
-const serverless = require('serverless-http');
 
 router.get('/get/crypto', async (req, res) => {
   try {
@@ -39,5 +38,4 @@ router.get('/get/crypto', async (req, res) => {
   }
 });
 
-app.use('/.netlify/functions/routers/crypto', router);
-module.exports.handler = serverless(app);
+module.exports = router;

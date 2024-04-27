@@ -38,5 +38,4 @@ router.get('/get/ai', async (req, res) => {
   }
 });
 
-app.use('/.netlify/functions/routers/AI', router);
-module.exports.handler = serverless(app);
+module.exports = router;
